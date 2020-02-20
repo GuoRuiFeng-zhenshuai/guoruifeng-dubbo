@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guoruifeng.dao.ArticleMapper">
+<select id="l" resultType="article">
+select * from cms_article where id=id 
+
+	<if test="tiaojian!=null and tiaojian!=''">
+		ORDER BY '%${tiaojian}%'  DESC
+	</if>
+	<if test="s1!=null and s1!=''">
+		and  created > '${s1}'
+	</if>
+	<if test="s2!=null and s2!=''">
+		and  created &lt; '${s2}'
+	</if>
+	
+	</select>
+</mapper>
